@@ -38,8 +38,21 @@ class HomeScreen extends StatelessWidget {
                 // Usually for streams, that remain active.
                 return Center(child: CircularProgressIndicator());
               case ConnectionState.done:
-                // It is done.
-                return Text("A operação acabou.");
+                {
+                  if (snapshot.data == null || snapshot.data!.isEmpty) {
+                    return Center(child: Text("Nenhuma contra encontrada."));
+                  } else {
+                    List<Account> listAccounts = snapshot.data!;
+                    return ListView.builder(
+                      itemCount: listAccounts.length,
+                      itemBuilder: (context, index) {
+                        return AccountWidget(
+                          account: listAccounts.elementAt(index),
+                        );
+                      },
+                    );
+                  }
+                }
             }
           },
         ),
