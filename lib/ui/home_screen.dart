@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_banco_douro/ui/styles/colors.dart';
+import '../ui/styles/colors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
