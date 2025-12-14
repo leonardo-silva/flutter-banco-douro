@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter_banco_douro/api/api_key.dart';
-import 'package:flutter_banco_douro/models/account.dart';
+import '../api/api_key.dart';
+import '../models/account.dart';
+
 import 'package:http/http.dart';
 import 'dart:convert';
 
@@ -9,7 +10,6 @@ class AccountService {
   final StreamController<String> _streamController = StreamController<String>();
   Stream<String> get streamInfos => _streamController.stream;
 
- // .br added on porpose to force an exception
   String url = "https://api.github.com/gists/a865b976a64c86710d8732248e3f8f98";
 
   Future<List<Account>> getAll() async {
