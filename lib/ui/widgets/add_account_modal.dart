@@ -15,8 +15,8 @@ class AddAccountModal extends StatefulWidget {
 class _AddAccountModalState extends State<AddAccountModal> {
   String _accountType = "AMBROSIA";
 
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
 
   bool isLoading = false;
 
@@ -112,7 +112,13 @@ class _AddAccountModalState extends State<AddAccountModal> {
                       backgroundColor: WidgetStatePropertyAll(AppColor.orange),
                     ),
                     child: (isLoading)
-                        ? CircularProgressIndicator()
+                        ? SizedBox(
+                            height: 16,
+                            width: 16,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                            ),
+                          )
                         : Text(
                             "Adicionar",
                             style: TextStyle(color: Colors.black),
