@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_banco_douro/ui/styles/colors.dart';
 
 class AddAccountModal extends StatelessWidget {
   const AddAccountModal({super.key});
@@ -25,6 +26,37 @@ class AddAccountModal extends StatelessWidget {
           Text(
             "Preencha os dados abaixo:",
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+          ),
+          TextFormField(decoration: InputDecoration(label: Text("Nome"))),
+          TextFormField(
+            decoration: InputDecoration(label: Text("Ultimo nome")),
+          ),
+          SizedBox(height: 32),
+          Row(
+            children: [
+              Expanded(
+                //The widget Expanded expands the elements to the maximum width, since we can not use CrossAxisAlignment.stretch for the row, in this case.
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Cancelar",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(AppColor.orange),
+                  ),
+                  child: Text(
+                    "Adicionar",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
