@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_banco_douro/ui/styles/colors.dart';
 
-class AddAccountModal extends StatelessWidget {
+class AddAccountModal extends StatefulWidget {
+  // It was necessary to change this widget para Stateful after the creation of _accountType, because now it has a state that changes.
   const AddAccountModal({super.key});
+
+  @override
+  State<AddAccountModal> createState() => _AddAccountModalState();
+}
+
+class _AddAccountModalState extends State<AddAccountModal> {
+  String _accountType = "AMBROSIA";
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +49,29 @@ class AddAccountModal extends StatelessWidget {
             TextFormField(decoration: InputDecoration(label: Text("Nome"))),
             TextFormField(
               decoration: InputDecoration(label: Text("Ultimo nome")),
+            ),
+            SizedBox(height: 16),
+            Text("Tipo da conta"),
+            DropdownButton<String>(
+              value: _accountType,
+              isExpanded:
+                  true, // to make the little arrow of the dropdown to go to the end, not next to the value
+              items: [
+                DropdownMenuItem(value: "AMBROSIA", child: Text("Ambrosia")),
+                DropdownMenuItem(value: "CANJICA", child: Text("Canjica")),
+                DropdownMenuItem(value: "PUDIM", child: Text("Pudim")),
+                DropdownMenuItem(
+                  value: "BRIGADEIRO",
+                  child: Text("Brigadeiro"),
+                ),
+              ],
+              onChanged: (newValue) {
+                if (newValue != null) {
+                  setState(() {
+                    _accountType = newValue;
+                  });
+                }
+              },
             ),
             SizedBox(height: 32),
             Row(
